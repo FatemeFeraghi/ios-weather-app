@@ -5,9 +5,11 @@
 //  Created by english on 2021-09-28.
 //
 
+//Model a weather object
 import Foundation
 
 struct WeatherModel {
+    //Stored propeerties
     let conditionId: Int
     let cityName: String
     let temperature: Double
@@ -16,6 +18,7 @@ struct WeatherModel {
         return String(format: "%.1f", temperature)
     }
     
+    //Computed property
     var conditionName: String {
         switch conditionId {
         case 200...232:

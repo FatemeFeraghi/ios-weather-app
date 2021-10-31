@@ -8,7 +8,12 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
 
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -23,9 +28,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        
+        weatherManager.delegate = self
+        searchTextField.delegate = self
     }
     
     @IBAction func btnSearchPressed(_ sender: UIButton) {
@@ -54,6 +59,10 @@ class ViewController: UIViewController {
         
         searchTextField.text = ""
         
+    }
+    
+    func didUpdateWeather(_ weathermanager: WeatherManager, weather: WeatherModel){
+        print(weather.temperature)
     }
 }
 

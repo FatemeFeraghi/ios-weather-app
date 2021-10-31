@@ -10,9 +10,10 @@ import Foundation
 struct WeatherData: Codable {
     let name: String
     let main: Main
-    let weather: [Weather]
+    let weather: [Weather] //An array of weather conditions
 }
 
+//The name of properties should match with the properties in JSON data comming from web
 struct Main: Codable {
     let temp: Double
 }
