@@ -21,11 +21,20 @@ struct WeatherManager {
     //We would be able to call the function didUpdateWeather
     var delegate: WeatherManagerDelegate?
     
+    //It takes a city name and creates a url string from it
     func fetchWeather(cityName : String){
         let urlString = "\(weatherURL)&q=\(cityName)"
+        
+        //perform the request with the url string
         performRequest(with: urlString)
     }
     
+    func fetchWeather(latitude: CLLocationDegrees, longitute: CLLocationDegrees) {
+        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitute)"
+        performRequest(with: urlString)
+    }
+    
+    //The request goes into this method and does the networking to fetch some data back from open weather map
     func performRequest(with urlString: String){
         
         //1.Create a URL
@@ -38,7 +47,7 @@ struct WeatherManager {
             //This is a function which is triggered by the task when it's complete
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    print(error!)
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 
@@ -64,10 +73,9 @@ struct WeatherManager {
             let name = decodedDate.name
             
             let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
-            
-            print(weather.conditionName)
+            return weather
         } catch {
-            print(error)
+            delegate?.didFailWithError(error: error)
             return nil
         }
     }

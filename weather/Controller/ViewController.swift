@@ -8,13 +8,8 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
+class ViewController: UIViewController {
     
-    func didFailWithError(error: Error) {
-        print(error)
-    }
-    
-
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -24,14 +19,31 @@ class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDeleg
     @IBOutlet weak var conditionImageView: UIImageView!
     
     var weatherManager = WeatherManager()
+    //Responsible for getting the current GPS Location of the phone
     let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //This setting should be done before making the requestLocation
+        locationManager.delegate = self
+
+        //Ask the phone user to ask for permission
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
         weatherManager.delegate = self
         searchTextField.delegate = self
     }
+    
+    @IBAction func locationPressed(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension ViewController: UITextFieldDelegate {
     
     @IBAction func btnSearchPressed(_ sender: UIButton) {
         searchTextField.endEditing(true)
@@ -60,9 +72,41 @@ class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDeleg
         searchTextField.text = ""
         
     }
+}
+
+//MARK: - WeatherManagerDelegate
+
+extension ViewController: WeatherManagerDelegate {
     
     func didUpdateWeather(_ weathermanager: WeatherManager, weather: WeatherModel){
-        print(weather.temperature)
+        //DispatchQueue is a closure which handles the thread of data loading
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weather.temperatureString
+            self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+            self.cityLabel.text = weather.cityName
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+}
+
+//MARK: - CLLocationManagerDelegate
+
+extension ViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            weatherManager.fetchWeather(latitude: lat, longitute: lon)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }
 
