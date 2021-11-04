@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var conditionImageView: UIImageView!
     
     var weatherManager = WeatherManager()
+    
     //Responsible for getting the current GPS Location of the phone
     let locationManager = CLLocationManager()
 
@@ -49,28 +50,31 @@ extension ViewController: UITextFieldDelegate {
         searchTextField.endEditing(true)
     }
     
+    //Manage the text of TextField by the return key on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.endEditing(true)
         return true
     }
     
+    //Validation of text field to let end editing if the input is valid
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField.text != "" {
             return true
         } else {
+            //e.g.: When the user press return key without typing anything
             textField.placeholder = "Please start typing"
             return false
+//            
         }
     }
     
+    //This function is trigered when the user stop editing and press return key
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
         if let city = searchTextField.text {
             weatherManager.fetchWeather(cityName: city)
         }
         
         searchTextField.text = ""
-        
     }
 }
 
