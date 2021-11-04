@@ -74,8 +74,8 @@
                                 <color key="textColor" name="weatherColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MWy-xE-w8w">
-                                <rect key="frame" x="102.5" y="360" width="209.5" height="119.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="MWy-xE-w8w">
+                                <rect key="frame" x="93" y="359" width="228" height="113.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jp-0V-vHc">
                                         <rect key="frame" x="0.0" y="0.0" width="103.5" height="107.5"/>
@@ -83,19 +83,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="o" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riy-zy-bNc">
-                                        <rect key="frame" x="108.5" y="0.0" width="27" height="60"/>
+                                        <rect key="frame" x="119.5" y="0.0" width="27" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADM-bu-IeL">
-                                        <rect key="frame" x="140.5" y="0.0" width="69" height="119.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                        <rect key="frame" x="162.5" y="0.0" width="65.5" height="113.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="95"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="209.5" id="NNn-HE-Guu"/>
-                                    <constraint firstAttribute="height" constant="119.5" id="ohf-f6-gp1"/>
+                                    <constraint firstAttribute="height" constant="113.5" id="DmT-gP-pMs"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -106,9 +105,9 @@
                             <constraint firstItem="NoV-0L-DUc" firstAttribute="top" secondItem="M2A-c8-lVU" secondAttribute="bottom" constant="34" id="KeL-kF-5dm"/>
                             <constraint firstAttribute="bottom" secondItem="7rs-jz-edI" secondAttribute="bottom" id="NKX-cX-JdV"/>
                             <constraint firstItem="M2A-c8-lVU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UuL-ed-NAZ"/>
+                            <constraint firstItem="MWy-xE-w8w" firstAttribute="top" secondItem="kMA-pr-neE" secondAttribute="bottom" constant="43" id="Wko-Tr-Qqx"/>
+                            <constraint firstItem="MWy-xE-w8w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XxH-Ir-rf5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M2A-c8-lVU" secondAttribute="trailing" constant="20" id="YRq-Lr-jFv"/>
-                            <constraint firstItem="MWy-xE-w8w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eut-w8-WrW"/>
-                            <constraint firstItem="MWy-xE-w8w" firstAttribute="top" secondItem="kMA-pr-neE" secondAttribute="bottom" constant="44" id="jN4-iY-fiw"/>
                             <constraint firstItem="7rs-jz-edI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jeH-z7-2A3"/>
                             <constraint firstItem="kMA-pr-neE" firstAttribute="top" secondItem="NoV-0L-DUc" secondAttribute="bottom" constant="29.5" id="mzb-yX-wWI"/>
                             <constraint firstItem="M2A-c8-lVU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="19" id="nEE-PB-kLE"/>
@@ -127,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2506" y="88"/>
+            <point key="canvasLocation" x="-2507.2463768115945" y="87.723214285714278"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="linkColor"/>
